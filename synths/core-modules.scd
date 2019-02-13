@@ -43,6 +43,8 @@ this may be refacored later.
 					sustain: ~sustain,
 					speed: ~speed,
 					freq: ~freq,
+					lastFreq: ~lastFreq,
+					portaTime: ~portaTime,
 					endSpeed: ~endSpeed,
 					begin: ~begin,
 					end: ~end,

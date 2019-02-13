@@ -28,6 +28,7 @@ DirtOrbit {
 	var <synthBus, <globalEffectBus, <dryBus;
 	var <group, <globalEffects, <cutGroups;
 	var <>minSustain;
+	var <>lastFreq;
 
 
 	var <>defaultParentEvent;
@@ -48,6 +49,7 @@ DirtOrbit {
 		dryBus = Bus.audio(server, dirt.numChannels);
 		globalEffectBus = Bus.audio(server, dirt.numChannels);
 		minSustain = 8 / server.sampleRate;
+		lastFreq = 440;
 		this.initDefaultGlobalEffects;
 		this.initNodeTree;
 		this.makeDefaultParentEvent;
@@ -188,6 +190,8 @@ DirtOrbit {
 			~octave = 5;
 			~midinote = #{ ~note ? ~n + (~octave * 12) };
 			~freq = #{ ~midinote.value.midicps };
+			~lastFreq = ~freq.copy;
+
 			~delta = 1.0;
 
 			~latency = 0.0;
@@ -200,6 +204,7 @@ DirtOrbit {
 			~amp = 0.4;
 			~fadeTime = 0.001;
 
+			~portaTime = 0.0;
 
 			// values from the dirt bus
 			~orbit = this;

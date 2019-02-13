@@ -66,6 +66,10 @@ DirtEvent {
 		var useUnit;
 
 		~freq = ~freq.value;
+
+		~lastFreq = orbit.lastFreq;
+		~portaTime = ~portaTime.value;
+
 		unitDuration = ~unitDuration.value;
 		useUnit = unitDuration.notNil;
 
@@ -191,6 +195,7 @@ DirtEvent {
 
 		});
 
+		orbit.lastFreq = ~freq.value;
 	}
 
 

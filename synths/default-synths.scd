@@ -138,4 +138,14 @@ SynthDef(\debug, { |begin = -1, end = -1, delta = -1, sustain = -1, unitDuration
 }).add
 );
 
+(
+SynthDef(\portaTest, { |out, sustain = 0.03, freq = 440, lastFreq = 440, portaTime = 0.0, pan = 0, width = 0.3|
+	var env, sound;
+	sound = SinOsc.ar(Line.kr(lastFreq, freq, portaTime), 0.5pi);
+	env = EnvGen.ar(Env.perc(0.01, 0.99, 1, -1), timeScale:sustain, doneAction:2);
+	OffsetOut.ar(out,
+		DirtPan.ar(env * sound, ~dirt.numChannels, pan)
+	)
+}).add;
+)
 )
